@@ -1,8 +1,9 @@
 {
   "name": "create-context",
   "displayName": "vscode-create-context",
+  "publisher": "jardel-machado",
   "description": "Gere automaticamente a estrutura completa de um novo contexto em projetos .NET com apenas um clique. Ideal para arquiteturas em camadas!",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/Jardel-Machado/contexto-dotnet-extension.git"
@@ -10,27 +11,46 @@
   "engines": {
     "vscode": "^1.99.0"
   },
+  "icon": "logo.png",
+  "activationEvents": [
+    "onCommand:extension.createContext"
+  ],
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
-  "commands": [
-    {
-      "command": "extension.createContext",
-      "title": "Criar Novo Contexto .NET"
-    }
-  ],
-  "menus": {
-    "explorer/context": [
+    "commands": [
       {
         "command": "extension.createContext",
-        "group": "navigation"
+        "title": "Criar Novo Contexto .NET"
       }
-    ]
-  }
-},
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "extension.createContext"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "extension.createContext"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "extension.createContext",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "extension.createContext",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
   "scripts": {
     "vscode:prepublish": "npm run package",
     "compile": "npm run check-types && npm run lint && node esbuild.js",

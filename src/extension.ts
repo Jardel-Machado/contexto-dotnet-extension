@@ -2,12 +2,14 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 
 export function activate(context: vscode.ExtensionContext) {
+  console.log("⚡ Ativando extensão...");
+
   let disposable = vscode.commands.registerCommand('extension.createContext', () => {
+    vscode.window.showInformationMessage('Executando script PowerShell...');
     const scriptPath = path.join(context.extensionPath, 'scripts', 'CriarContexto.ps1');
     const command = `powershell -ExecutionPolicy Bypass -File "${scriptPath}"`;
 
     const terminal = vscode.window.activeTerminal ?? vscode.window.createTerminal("Criar Contexto .NET");
-
     terminal.sendText(command);
     terminal.show();
   });
